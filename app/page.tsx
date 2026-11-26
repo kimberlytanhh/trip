@@ -42,8 +42,8 @@ export default function Home() {
   const pushMessage = (msg: any) => setMessages((p) => [...p, { id: uid(), ...msg }]);
 
   /* Called when user types text and presses send/enter */
-  const sendMessage = async (text: string) => {
-    if (!text.trim()) return;
+  cconst sendMessage = async (text: string) => {
+    if (!text.trim() || loading) return;
     pushMessage({ role: "user", type: "text", text });
     setInput("");
 
@@ -95,6 +95,10 @@ export default function Home() {
         body: JSON.stringify({ message: userText, memory: mem }),
       });
 
+      if (!res.ok) {
+        throw new Error(`Request failed with status ${res.status}`);
+      }
+      
       const data = await res.json();
 
       // Defensive: if unexpected shape, show raw reply
@@ -143,7 +147,11 @@ export default function Home() {
       }
     } catch (err) {
       console.error("callBackend error:", err);
-      pushMessage({ role: "ai", type: "text", text: "Server error. Check console." });
+      pushMessage({
+        role: "ai",
+        type: "text",
+        text: "Sorry, something went wrong. Please try again in a moment.",
+      });
     } finally {
       setLoading(false);
     }
@@ -166,6 +174,7 @@ export default function Home() {
 
         <div className="p-4 border-t flex gap-2">
           <input
+            disabled={loading}
             className="flex-1 border p-3 rounded"
             placeholder="Type here…"
             value={input}
@@ -173,6 +182,7 @@ export default function Home() {
             onKeyDown={(e) => e.key === "Enter" && sendMessage(input)}
           />
           <button
+            disabled={loading}
             onClick={() => sendMessage(input)}
             className="bg-blue-600 text-white px-4 py-2 rounded"
           >
