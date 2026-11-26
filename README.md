@@ -1,36 +1,129 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# TripGenie — AI Travel Itinerary Planner
+
+TripGenie is an AI-powered travel itinerary planner that helps users create personalised travel plans through an interactive chatbot. Users provide their travel preferences, and the application generates a structured itinerary with suggested activities for each day.
+
+## Features
+
+- **Conversational Travel Planning** — Interact with an AI chatbot to plan your trip.
+- **Destination Selection** — Specify your preferred travel destination.
+- **Flexible Trip Duration** — Choose how many days you plan to travel.
+- **Personalised Preferences** — Provide your travel date, budget, travel style and travel companions.
+- **AI-Generated Itineraries** — Generate daily travel plans with morning, afternoon and evening activities.
+- **Expandable Daily Plans** — Expand or collapse each day to view itinerary details.
+
+## Technologies Used
+
+| Technology | Purpose |
+|---|---|
+| Next.js 16 | Full-stack web framework |
+| React 19 | User interface |
+| TypeScript | Application development |
+| Tailwind CSS 4 | Styling |
+| Groq SDK | AI model integration |
+| Llama 3.3 70B Versatile | Itinerary generation |
+
+## How It Works
+
+1. Start a conversation with the TripGenie chatbot.
+2. Enter your travel destination.
+3. Select your trip duration.
+4. Answer questions about your travel date, budget, travel style and companions.
+5. TripGenie uses the collected information to generate a personalised itinerary.
+6. Expand each day to explore the suggested activities.
+
+## Project Structure
+
+```text
+trip/
+├── app/
+│   ├── api/
+│   │   └── chat/
+│   │       └── route.ts
+│   ├── globals.css
+│   ├── layout.tsx
+│   └── page.tsx
+├── public/
+├── .gitignore
+├── next.config.ts
+├── package.json
+├── package-lock.json
+└── tsconfig.json
+```
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js
+- npm
+- A Groq API key
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/kimberlytanhh/trip.git
+```
+
+### 2. Navigate to the project folder
+
+```bash
+cd trip
+```
+
+### 3. Install dependencies
+
+```bash
+npm install
+```
+
+### 4. Configure environment variables
+
+Create a file named `.env.local` in the root directory and add:
+
+```env
+GROQ_API_KEY=your_groq_api_key
+```
+
+Replace `your_groq_api_key` with your own API key.
+
+**Important:** Never upload your actual API key to GitHub.
+
+### 5. Start the development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Available Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Command | Description |
+|---|---|
+| `npm run dev` | Starts the development server |
+| `npm run build` | Builds the application |
+| `npm run start` | Starts the production server |
+| `npm run lint` | Runs ESLint checks |
 
-## Learn More
+## Environment Variables
 
-To learn more about Next.js, take a look at the following resources:
+| Variable | Description |
+|---|---|
+| `GROQ_API_KEY` | API key used to access the Groq AI service |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Future Improvements
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Improve itinerary recommendations with more detailed travel information.
+- Add options to save and revisit generated itineraries.
+- Enhance the chatbot interface and user experience.
+- Introduce additional travel preferences and customisation options.
 
-## Deploy on Vercel
+## Author
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+**Kimberly Tan**
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- GitHub: [@kimberlytanhh](https://github.com/kimberlytanhh)
+
+---
+
+*Built with Next.js, React, TypeScript and AI ♡*
