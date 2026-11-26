@@ -123,11 +123,17 @@ export default function Home() {
         // Make sure itinerary has days array to prevent crashes
         const itinerary = p.itinerary || { days: [] };
         if (!Array.isArray(itinerary.days)) itinerary.days = [];
-
+      
         pushMessage({
           role: "ai",
           type: "itinerary",
           itinerary,
+        });
+      } else if (p.type === "error") {
+        pushMessage({
+          role: "ai",
+          type: "text",
+          text: p.text || "Something went wrong. Please try again.",
         });
       } else if (p.reply) {
         // backward compatibility: simple text reply (older backends)
